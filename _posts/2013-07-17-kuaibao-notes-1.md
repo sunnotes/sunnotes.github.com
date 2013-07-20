@@ -1,7 +1,6 @@
 ---
 layout: post
-title: 余额宝快报手记<1>
-description: 
+title: 快报手记1：序言
 category: code
 tags: [weixin , weibo , ali_bao ]
 ---
