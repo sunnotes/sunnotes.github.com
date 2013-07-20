@@ -1,0 +1,28 @@
+
+
+
+cd /d/DEV/WorkSpaces/sunnotes.github.com/
+
+rake post title=”hello world ” #新建文章
+
+rm –rf _post/core-samples/ #清理示例文章
+
+本地编译：jekyll build --safe
+本地启动：jekyll –server
+-------------------
+
+
+Jekyll 本地调试 出现中文字符的问题
+解决方案http://chxt6896.github.io/blog/2012/02/13/blog-jekyll-native.html
+
+1. MyGit 控制台解决方案
+临时：在执行 jekyll 命令前，将当前控制台的代码格式转为 UTF-8:
+ $ export LC_ALL=en_US.UTF-8
+ $ export LANG=en_US.UTF-8
+ $ jekyll --server --auto
+永久：添加两对用户自定义的环境变量，LC_ALL=en_US.UTF-8 和 LANG=en_US.UTF-8
+
+2.cmd 控制台解决方案
+临时：在执行 jekyll 命令前，将当前控制台的代码格式转为 UTF-8:
+ chcp 65001
+ jekyll --server --auto
