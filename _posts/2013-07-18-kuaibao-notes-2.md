@@ -22,13 +22,13 @@ tags: [weixin , weibo , ali_bao ]
 
 由于之前没有用过PHP，一个人琢磨，用了一个周末编码，主要过程有：
 
-###定义的XML文件格式
+###预定义的XML文件格式
 <pre>
-	<?xml version="1.0" encoding="utf-8"?>
-	<root>
-	<info date="2013-07-07"><code>000198</code><profit>1.3671</profit><rate>5.4250</rate></info>
-	<info date="2013-07-08"><code>000198</code><profit>1.3129</profit><rate>5.2790</rate></info>
-	</root>
+	< ?xml version="1.0" encoding="utf-8"? >
+	< root >
+	< info date="2013-07-07" >< code >000198< code >< profit >1.3671< /profit >< rate >5.4250< /rate >< /info>
+	< info date="2013-07-08" >< code>000198< /code>< profit >1.3129< /profit >< rate>5.2790< /rate >< /info>
+	< /root >
 </pre>
 
 ###php读取XML
@@ -36,18 +36,18 @@ tags: [weixin , weibo , ali_bao ]
 <pre>
 <!--lang=php-->
 /**
- * 判断是否是第一次发微博
- * @param string $url 请求地址
- * @param array $post_data post键值对数据
- * @return string
+ * 读取XML文件，判断是否是第一次发微博
+ * @param string $filename 文件名
  */
 function is_first($filename) {
+    //读取XML
     $doc = new DOMDocument("1.0","utf-8");
 	file_get_contents(  'saemc://'.'../data'.'/info.xml',$doc);
 	$infos = $doc->getElementsByTagName("info");
 	$today = date ("Y-m-d");
 	echo $today;
 	$array  = array();
+	//判断是否存在
 	foreach ($infos as $info){
 		$date = $info->getAttribute("date");
 		$array[] =$date;
