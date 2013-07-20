@@ -24,11 +24,13 @@ tags: [weixin , weibo , ali_bao ]
 
 ###预定义的XML文件格式
 <pre>
-	< ?xml version="1.0" encoding="utf-8"? >
-	< root >
-	< info date="2013-07-07" >< code >000198< code >< profit >1.3671< /profit >< rate >5.4250< /rate >< /info>
-	< info date="2013-07-08" >< code>000198< /code>< profit >1.3129< /profit >< rate>5.2790< /rate >< /info>
-	< /root >
+<code>
+	<?xml version="1.0" encoding="utf-8"?>
+	<root>
+	<info date="2013-07-07"><code>000198</code><profit>1.3671</profit><rate>5.4250</rate></info>
+	<info date="2013-07-08"><code>000198</code><profit>1.3129</profit><rate>5.2790</rate></info>
+    </root>
+</code>
 </pre>
 
 ###php读取XML
