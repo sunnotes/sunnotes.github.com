@@ -7,7 +7,8 @@ rake post title=”hello world ” #新建文章
 
 rm –rf _post/core-samples/ #清理示例文章
 
-jekyll –server
+本地编译：jekyll build --safe
+本地启动：jekyll –server
 -------------------
 
 
