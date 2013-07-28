@@ -29,7 +29,6 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 	{"a":1,"b":2,"c":3,"d":4,"e":5}
 	
 再看一个对象转换的例子：
-
 　
     $obj->body = 'another post';
 　　$obj->id = 21;
@@ -38,18 +37,15 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 　　$obj->status = NULL;
     echo json_encode($obj);
 　
-
 结果为：
 
-
 　　{
-　　　　"body":"another post",
-　　　　"id":21,
-　　　　"approved":true,
-　　　　"favorite_count":1,
-　　　　"status":null
+		"body":"another post",
+		"id":21,
+		"approved":true,
+		"favorite_count":1,
+		"status":null
 　　}
-
 
 由于json只接受utf-8编码的字符，所以json_encode()的参数必须是utf-8编码，
 否则会得到空字符或者null。当中文使用GB2312编码，或者外文使用ISO-8859-1编码的时候，这一点要特别注意。
@@ -57,12 +53,10 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 ###json_encode()
 
 该函数用于将json文本转换为相应的PHP数据结构。下面是一个例子：
-
 　　
 	$json = '{"foo": 12345}';
 　　$obj = json_decode($json);
 　　print $obj->{'foo'}; // 12345
-
 
 通常情况下，json_decode()总是返回一个PHP对象，而不是数组。比如：
 　
@@ -72,11 +66,11 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 输出结果为
 
 　　object(stdClass)#1 (5) {
-　　　　["a"] => int(1)
-　　　　["b"] => int(2)
-　　　　["c"] => int(3)
-　　　　["d"] => int(4)
-　　　　["e"] => int(5)
+		["a"] => int(1)
+		["b"] => int(2)
+		["c"] => int(3)
+		["d"] => int(4)
+		["e"] => int(5)
 　　}
 
 如果想要强制生成PHP关联数组，json_decode()需要加一个参数true：
@@ -89,9 +83,9 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
     array(5) {
         ["a"] => int(1)
 		["b"] => int(2)
-　　 　 ["c"] => int(3)
-　　 　	["d"] => int(4)
-　　 　	["e"] => int(5)
+		["c"] => int(3)
+		["d"] => int(4)
+		["e"] => int(5)
 　　}
 
 ##百度地图API
@@ -132,7 +126,6 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 
 返回的结果是：
 
-<pre>
 	{
 		"status":"OK",
 		"result":{
@@ -152,7 +145,7 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 			"cityCode":131
 		}
 	}
-</pre>
+
 	
 通过decode()函数解析成数组
 
