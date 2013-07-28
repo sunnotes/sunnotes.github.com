@@ -9,6 +9,9 @@ permalink: /about/
 {% include JB/setup %}
 
 
+![头像](/adds/me/aboutme.jpg "me")
+
+
 - [豆瓣](http://www.douban.com/people/32504571) - 阅读，音乐
 
 - [weibo](http://weibo.com/ieason8) - @Eason8
