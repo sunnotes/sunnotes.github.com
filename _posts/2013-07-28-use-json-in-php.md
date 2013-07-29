@@ -31,10 +31,10 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 	
 再看一个对象转换的例子：
 
-	$obj->body = 'another post';
-	$obj->id = 21;
-	$obj->approved = true;
-	$obj->favorite_count = 1;
+        $obj->body = 'another post';
+        $obj->id = 21;
+        $obj->approved = true;
+        $obj->favorite_count = 1;
         $obj->status = NULL;
         echo json_encode($obj);
 　
