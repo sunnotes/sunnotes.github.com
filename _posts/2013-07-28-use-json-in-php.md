@@ -35,8 +35,8 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 	$obj->id = 21;
 	$obj->approved = true;
 	$obj->favorite_count = 1;
-　　$obj->status = NULL;
-	echo json_encode($obj);
+        $obj->status = NULL;
+        echo json_encode($obj);
 　
 结果为：
 
