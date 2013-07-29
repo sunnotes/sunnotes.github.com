@@ -171,7 +171,7 @@ PHP也提供方法直接解析XML，正则匹配是最笨的办法）过滤出�
 
   1.  使用JSON可以高效的解析出所需要的信息
   
-  2.  文章中所有的代码，详见[github](https://github.com/sunnotes/beta/)   json 目录下
+  2.  文章中所有的代码，详见[github](https://github.com/sunnotes/beta/)   json 目录下 json.php
 	
 ##参考材料
   1.  [在PHP语言中使用JSON](http://www.ruanyifeng.com/blog/2011/01/json_in_php.html)
