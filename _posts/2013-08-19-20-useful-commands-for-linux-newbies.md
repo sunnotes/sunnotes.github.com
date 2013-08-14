@@ -43,15 +43,15 @@ ls命令是列出目录内容(List Directory Contents)的意思。运行它就�
 
 	root@tecmint:~# ls -a
 
-	.			            .gnupg			        .dbus			        .goutputstream-PI5VVW		.mission-control
+	.			.gnupg			.dbus			.goutputstream-PI5VVW		.mission-control
 	.adobe                  deja-dup                .grsync                 .mozilla                 	.themes
 	.gstreamer-0.10         .mtpaint                .thumbnails             .gtk-bookmarks          	.thunderbird
-	.HotShots               .mysql_history          .htaccess		        .apport-ignore.xml      	.ICEauthority           
+	.HotShots               .mysql_history          .htaccess		.apport-ignore.xml      	.ICEauthority           
 	.profile                .bash_history           .icons                  .bash_logout                .fbmessenger
 	.jedit                  .pulse                  .bashrc                 .liferea_1.8             	.pulse-cookie            
-	.Xauthority		        .gconf                  .local                  .Xauthority.HGHVWW		    .cache
+	.Xauthority		.gconf                  .local                  .Xauthority.HGHVWW		    .cache
 	.gftp                   .macromedia             .remmina                .cinnamon                   .gimp-2.8
-	.ssh                    .xsession-errors 	    .compiz                 .gnome                      teamviewer_linux.deb          
+	.ssh                    .xsession-errors 	.compiz                 .gnome                      teamviewer_linux.deb          
 	.xsession-errors.old	.config                 .gnome2                 .zoncolor
 
 ###注意：
