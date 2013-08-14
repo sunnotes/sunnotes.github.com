@@ -43,7 +43,7 @@ ls命令是列出目录内容(List Directory Contents)的意思。运行它就�
 
 	root@tecmint:~# ls -a
 	
-	.			.gnupg			.dbus			.goutputstream-PI5VVW		.mission-control
+        .			.gnupg			.dbus			.goutputstream-PI5VVW		.mission-control
         .adobe                  deja-dup                .grsync                 .mozilla                 	.themes
         .gstreamer-0.10         .mtpaint                .thumbnails             .gtk-bookmarks          	.thunderbird
         .HotShots               .mysql_history          .htaccess		.apport-ignore.xml      	.ICEauthority           
