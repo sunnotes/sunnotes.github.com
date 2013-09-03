@@ -2,8 +2,8 @@
 layout: post
 title: "对 Linux 中级用户非常有用的 20 个命令"
 description: ""
-category: 
-tags: []
+category: "notes"
+tags: [linux , shell , 转载]
 ---
 {% include JB/setup %}
 
