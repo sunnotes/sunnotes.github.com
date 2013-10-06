@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  | 
+title: | 
 tagline: 学会成长
 ---
 
