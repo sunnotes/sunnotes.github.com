@@ -55,7 +55,9 @@ JB :
   sharing :
     provider : false
 
+
+markdown: redcarpet
 pygments: true	
-markdown: rdiscount
+
 img_url: http://sunnotes.github.io/adds
   
