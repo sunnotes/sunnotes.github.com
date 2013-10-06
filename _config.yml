@@ -54,7 +54,8 @@ JB :
         idsite : '1'                   # the id of the site on Piwik
   sharing :
     provider : false
-    
+
+pygments: true	
 markdown: rdiscount
 img_url: http://sunnotes.github.io/adds
   
