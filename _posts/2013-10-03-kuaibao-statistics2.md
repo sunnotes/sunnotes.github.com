@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "余额宝快报微信公众平台数据分析报告"
+title: "余额宝快报分析报告"
 description: ""
 category: statistics
 tags: [wechat , weibo , ali_bao ]
