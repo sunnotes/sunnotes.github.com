@@ -3,7 +3,7 @@ layout: post
 title: 快报手记2：SAE本地读写XML失败的尝试
 description: 
 category: code
-tags: [weixin , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 ]
 ---
 {% include JB/setup %}
 

@@ -3,7 +3,7 @@ layout: post
 title: 快报手记5：微信获取用户的详细信息
 description: 
 category: code
-tags: [weixin , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 ]
 ---
 {% include JB/setup %}
 

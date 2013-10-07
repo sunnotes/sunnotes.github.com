@@ -2,7 +2,7 @@
 layout: post
 title: 快报手记1：序言
 category: code
-tags: [weixin , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 ]
 ---
 
 {% include JB/setup %}

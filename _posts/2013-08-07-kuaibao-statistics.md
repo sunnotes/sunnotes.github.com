@@ -3,7 +3,7 @@ layout: post
 title: 快报研究报告_20130807
 description: 
 category: statistics
-tags: [wechat , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 , 统计 ]
 ---
 {% include JB/setup %}
 

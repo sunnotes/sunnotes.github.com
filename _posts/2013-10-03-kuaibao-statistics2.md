@@ -3,7 +3,7 @@ layout: post
 title: "余额宝快报分析报告"
 description: ""
 category: statistics
-tags: [wechat , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 , 统计 ]
 ---
 {% include JB/setup %}
 

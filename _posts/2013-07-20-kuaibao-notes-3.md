@@ -3,7 +3,7 @@ layout: post
 title: 快报手记3：用mysql本地存储数据成功
 description: 
 category: code
-tags: [weixin , weibo , ali_bao ]
+tags: [wechat , 余额宝 , 快报 ]
 ---
 {% include JB/setup %}
 
