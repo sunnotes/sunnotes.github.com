@@ -57,7 +57,6 @@ JB :
 
 
 markdown: redcarpet
-pygments: true	
 
 img_url: http://sunnotes.github.io/adds
   
