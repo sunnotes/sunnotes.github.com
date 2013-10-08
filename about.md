@@ -39,8 +39,9 @@ permalink: /about/
 其实，我只想当个手艺人
 
 
+<hr/>
 
-寻找我的足迹
+[寻找我的足迹]()
 
 - [代码库](https://github.com/sunnotes) - Know it,then note it.™
 
