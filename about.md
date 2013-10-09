@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 关于 
+title: 关于我 
 header: Pages
 group: navigation
 permalink: /about/
@@ -28,7 +28,7 @@ permalink: /about/
 喜欢Linux, 喜欢Open Source/Software，爱捣腾，钟情于互联网
 
 
-维护着[余额宝快报]的微博与微信平台，目前正为7000+用户提供服务，感谢SAE
+维护着[余额宝快报]的[微博](http://weibo.com/aliyuebao)与[微信]({{ site.img_url }}/me/kuaibao_wechat_code.jpg})平台，目前正为7000+用户提供服务，感谢SAE
 
 
 对数据挖掘与数据分析很感兴趣，目前正朝着数据科学家的路上一路狂奔
