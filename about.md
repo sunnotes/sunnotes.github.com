@@ -7,25 +7,34 @@ permalink: /about/
 ---
 
 {% include JB/setup %}
+{% include JB/setup %}
 
 
-![头像](/adds/me/aboutme.jpg "me")
+85后，目前混迹于废都
 
 
-- [豆瓣](http://www.douban.com/people/32504571) - 阅读，音乐
-
-- [weibo](http://weibo.com/ieason8) - @Eason8
-
-- [wordpress](http://sunnotes.com) - 个人站点
-
-- [知乎](http://zhihu.com/people/eason8) - @eason
-
-- Email and Gtalk：liliangjun88 AT gmail.com
+在经管学院呆了7年，却一直走的IT人的路
 
 
-<hr/>
-<h2>所有</h2>
-<ul>
-{% assign pages_list = site.pages %}
-{% include JB/pages_list %}
-</ul>
+从事JAVA开发4年，目前却在做C程序员
+
+
+一心向着技术，却走上了管理的路线
+
+
+轻度人格分裂，重度弱智青年，绝对是我真实的写照
+
+
+喜欢Linux, 喜欢Open Source/Software，爱捣腾，钟情于互联网
+
+
+维护着[余额宝快报]的微博与微信平台，目前正为7000+用户提供服务，感谢SAE
+
+
+对数据挖掘与数据分析很感兴趣，目前正朝着数据科学家的路上一路狂奔
+
+
+正在努力学习R/Hadoop/Hive，各种模型和机器学习算法
+
+
+其实，我只是相当一个手艺人
