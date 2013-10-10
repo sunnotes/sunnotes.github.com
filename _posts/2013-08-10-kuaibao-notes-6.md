@@ -3,7 +3,7 @@ layout: post
 title: "快报手记6：增加提问自动回复功能"
 description: ""
 category: code
-tags: [wechat , 余额宝 , 快报 ]
+tags: [微信 , 余额宝 , 快报 ]
 ---
 {% include JB/setup %}
 
