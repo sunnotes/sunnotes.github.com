@@ -10,6 +10,8 @@ tags: [jekyll , github , pages  ]
 首先去域名服务商域名解析记录列表中添加一条A记录，设置IP为103.245.222.133
 
 可以使用dig命令获取github提供的ip，如下所示
+
+
 ```
 eason@EASON:~$ dig sunnotes.github.com
 
@@ -31,12 +33,18 @@ github.map.fastly.net.	22	IN	A	103.245.222.133
 ;; WHEN: Mon Oct  7 22:38:54 2013
 ;; MSG SIZE  rcvd: 88
 ```
+
+
 可以看到sunnotes.github.com的IP为103.245.222.133
 
 然后在Pages的Root目录里面添加一个名为CNAME的文件，文件内容就是你的域名，例如这里的：
+
+
 ```
 sunnotes.com
 ```
+
+
 等域名更改生效，就可以用 sunnotes.me 访问你的Github博客了
 
 
