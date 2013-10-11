@@ -37,3 +37,16 @@ permalink: /about/
 
 
 其实，我只想当个手艺人
+
+
+- [代码库](https://github.com/sunnotes) - Know it,then note it.™
+
+- [豆瓣](http://www.douban.com/people/32504571) - 阅读，音乐
+
+- [weibo](http://weibo.com/ieason8) - @Eason8
+
+- [wordpress](http://sunnotes.com) - 个人站点
+
+- [知乎](http://zhihu.com/people/eason8) - @eason
+
+- Email and Gtalk：liliangjun88 AT gmail.com
