@@ -43,6 +43,9 @@ permalink: /about/
 
 [寻找我的足迹]()
 
+
+- [个人简历]({{ site.img_url }}/me/cv.pdf) - Yeah!It's me!
+
 - [代码库](https://github.com/sunnotes) - Know it,then note it.™
 
 - [豆瓣](http://www.douban.com/people/32504571) - 阅读，音乐
