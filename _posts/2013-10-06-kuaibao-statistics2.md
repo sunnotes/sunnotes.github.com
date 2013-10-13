@@ -1,11 +1,23 @@
 ---
 layout: post
-title: "余额宝快报平台数据分析报告"
+title: "余额宝快报平台数据分析报告Ⅱ(未完)"
 description: ""
 category: statistics
-tags: [微信 , 余额宝]
+tags: [ 余额宝 , 统计  ]
 ---
 {% include JB/setup %}
+
+摘要：
+
+【余额宝快报】是基于微信，提供余额宝（天弘增利宝货币基金）收益播报，计算，查询及常见问题回答的微信公共平台。本文是对该平台后台数据的分析与挖据，主要内容包括：1.对基金每日收益进行分析；2.对用户及其订阅及取消订阅行为进行分析；3.对消息及其种类，发送时间等信息进行分析；4.对每日新增关注人数进行回归分析；5.对每日消息数进行挖据分析。本文使用R语言作为工具，使用ggplot2包进行绘图，使用knitr+markdown进行文档编辑。
+
+观点：
+* 1.	快报男性用户是女性用户的2倍，男性更爱“理财”
+* 2.	很多用户通过向【快报】提问，获取余额宝相关的信息
+* 3.	【快报】每天的活跃用户数并没有随着用户的增加而增加，用户活跃度度相在降低
+
+
+报告文档[下载]({{site.img_url}}/adds/kuaibao/余额宝快报平台数据研究报告Ⅱ.pdf)
 
 
 1 概述
@@ -199,13 +211,13 @@ head(kuaibao.user)
 ```
 
 ```
-##          day subscribe unsubscribe newuser totaluser
-## 1 2013-07-23        50           9      41       547
-## 2 2013-07-24        43           2      41       588
-## 3 2013-07-25        38           3      35       623
-## 4 2013-07-26        21           2      19       642
-## 5 2013-07-27        36           9      27       669
-## 6 2013-07-28        63           9      54       723
+##          day subscribe unsubscribe newuser totaluser activeuser
+## 1 2013-07-23        50           9      41       547        137
+## 2 2013-07-24        43           2      41       588        124
+## 3 2013-07-25        38           3      35       623        128
+## 4 2013-07-26        21           2      19       642        116
+## 5 2013-07-27        36           9      27       669        124
+## 6 2013-07-28        63           9      54       723        148
 ```
 
 其中，
@@ -230,13 +242,13 @@ summary(kuaibao.user)
 ##  Mean   :2013-08-27   Mean   : 70.2   Mean   : 9   Mean   : 61.2  
 ##  3rd Qu.:2013-09-14   3rd Qu.: 79.2   3rd Qu.:11   3rd Qu.: 70.0  
 ##  Max.   :2013-10-02   Max.   :255.0   Max.   :23   Max.   :237.0  
-##    totaluser   
-##  Min.   : 547  
-##  1st Qu.:1342  
-##  Median :2186  
-##  Mean   :2398  
-##  3rd Qu.:3420  
-##  Max.   :4913
+##    totaluser    activeuser.activeuser
+##  Min.   : 547   Min.   :116.0        
+##  1st Qu.:1342   1st Qu.:236.2        
+##  Median :2186   Median :410.5        
+##  Mean   :2398   Mean   :421.1        
+##  3rd Qu.:3420   3rd Qu.:588.8        
+##  Max.   :4913   Max.   :910.0
 ```
 
 
@@ -274,7 +286,7 @@ head(kuaibao.user.melt)
 ```r
 ggplot(kuaibao.user.melt, aes(day, cnt, group = type, colour = type)) + geom_line() + 
     geom_point() + geom_smooth(method = "loess") + scale_x_date() + xlab("") + 
-    ylab("User cnt")
+    ylab("")
 ```
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_user_timeseries_lines.png" title="plot of chunk user timeseries lines" alt="plot of chunk user timeseries lines" style="display: block; margin: auto;" />
@@ -298,9 +310,21 @@ ggplot(user.scaled.melt, aes(kuaibao.user.day, cnt, group = type, colour = type)
 
 上图图为将数据进行标准正态化后的比较，二者的关联关系较为明显。
 
+#### 2.3.4  每日累计用户数时间序列图
+
+```r
+
+ggplot(kuaibao.user, aes(day, totaluser)) + geom_line() + geom_point() + geom_smooth() + 
+    scale_x_date() + xlab("") + ylab("")
+```
+
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_totaluser__timeseries.png" title="plot of chunk totaluser  timeseries" alt="plot of chunk totaluser  timeseries" style="display: block; margin: auto;" />
 
 
-#### 2.3.4 重点研究每日净新增的用户人数
+可以看出，每天
+
+
+#### 2.3.5 重点研究每日净新增的用户人数
 
 
 
@@ -325,15 +349,14 @@ ggplot(kuaibao.user, aes(x = day, y = newuser)) + geom_point(color = "#009E73") 
 
 通过loess拟合，没发现数据的规律。
 
-#### 2.3.5 用户性别分析
+#### 2.3.6 用户性别分析
 
 
 ```r
 cnt <- c(3164, 1514, 199)
-gen = c("MALE", "FEMALE", "UNKOWN")
+gen = c("<U+7537><U+6027>", "<U+5973><U+6027>", "<U+672A><U+77E5>")
 pct = round(cnt/sum(cnt) * 100)
 lab = paste(gen, " ", pct, "%")
-kuaibao.user.gender = data.frame(pct, gen, lab)
 ```
 
 
@@ -346,11 +369,31 @@ kuaibao.user.gender = data.frame(pct, gen, lab)
 详见下图：
 
 ```r
-ggplot(kuaibao.user.gender, aes(x = "", y = pct, fill = gen), stat = "bin") + 
-    geom_bar(width = 3) + coord_polar("y") + xlab("") + ylab("") + labs(fill = "lab")
+colors <- c("#56B4E9", "#009E73", "#D55E00")
+pie(cnt, labels = lab, col = colors, main = "<U+8BA2><U+9605><U+7528><U+6237><U+6027><U+522B><U+6BD4><U+4F8B><U+56FE>")
 ```
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_user_gender.png" title="plot of chunk user gender" alt="plot of chunk user gender" style="display: block; margin: auto;" />
+
+```r
+
+# ggplot(kuaibao.user.gender, aes(x = '' ,y = pct, fill = gen),stat = 'bin')
+# + geom_bar(width = 3) + coord_polar('y')+ xlab('') + ylab('') +
+# labs(fill='lab')
+```
+
+
+#### 2.3.7 用户活跃度分析
+
+```r
+rate <- round(kuaibao.user$activeuser/kuaibao.user$totaluser, 2)
+active <- data.frame(kuaibao.user$day, rate)
+colnames(active) <- c("day", "rate")
+ggplot(active, aes(x = day, y = rate)) + geom_point(color = "#009E73") + geom_smooth(method = "loess", 
+    color = "#D55E00") + scale_x_date() + xlab("") + ylab("")
+```
+
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_activeuser_analysis.png" title="plot of chunk activeuser analysis" alt="plot of chunk activeuser analysis" style="display: block; margin: auto;" />
 
 
 ### 2.4 消息统计分析
@@ -375,7 +418,7 @@ head(kuaibao.messages, 10)
 ## 10 263      0   1 2013-07-23 05:01:19 2013-07-23    5        1     compute
 ##    content
 ## 1       cx
-## 2   f%h/"
+## 2   æ¥è¯¢
 ## 3       cx
 ## 4     <NA>
 ## 5     <NA>
@@ -418,14 +461,14 @@ summary(kuaibao.messages)
 ##  3rd Qu.:2013-09-20 20:11:58   3rd Qu.:2013-09-20   3rd Qu.:19.0  
 ##  Max.   :2013-10-02 20:13:20   Max.   :2013-10-02   Max.   :23.0  
 ##                                                                   
-##     msg_type       type_detail             content     
-##  Min.   :1.00   compute  :41201   c            : 6785  
-##  1st Qu.:1.00   query    :14319   001          : 2458  
-##  Median :1.00   question : 5759   C            : 2318  
-##  Mean   :1.33   subscribe: 5055   f\0246g\033\n: 1720  
-##  3rd Qu.:1.00   help     : 1607   10000        : 1375  
-##  Max.   :5.00   other    : 1379   (Other)      :50367  
-##                 (Other)  : 1549   NA's         : 5846
+##     msg_type       type_detail       content     
+##  Min.   :1.00   compute  :41201   c      : 6785  
+##  1st Qu.:1.00   query    :14319   001    : 2458  
+##  Median :1.00   question : 5759   C      : 2318  
+##  Mean   :1.33   subscribe: 5055   æ¶ç : 1720  
+##  3rd Qu.:1.00   help     : 1607   10000  : 1375  
+##  Max.   :5.00   other    : 1425   (Other):50367  
+##                 (Other)  : 1503   NA's   : 5846
 ```
 
 
@@ -438,7 +481,7 @@ summary(kuaibao.messages)
 library(scales)
 ggplot(kuaibao.messages, aes(x = type_detail, color = type_detail, fill = type_detail)) + 
     geom_histogram() + scale_y_log10(breaks = trans_breaks("log10", function(x) 10^x), 
-    labels = trans_format("log10", math_format(10^.x)))
+    labels = trans_format("log10", math_format(10^.x))) + xlab("") + ylab("")
 ```
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_type_.png" title="plot of chunk messages type " alt="plot of chunk messages type " style="display: block; margin: auto;" />
@@ -449,7 +492,8 @@ ggplot(kuaibao.messages, aes(x = type_detail, color = type_detail, fill = type_d
 ```r
 ggplot(kuaibao.messages, aes(x = day)) + geom_histogram(aes(y = ..count..), 
     binwidth = 0.5) + geom_rect(data = kuaibao.messages, aes(xmin = day, xmax = day + 
-    1, fill = isWeekend(day)), ymin = 0, ymax = 2500, alpha = 0.005)
+    1, fill = isWeekend(day)), ymin = 0, ymax = 2500, alpha = 0.005) + xlab("") + 
+    ylab("")
 ```
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_cnt_ts_.png" title="plot of chunk messages cnt ts " alt="plot of chunk messages cnt ts " style="display: block; margin: auto;" />
@@ -460,7 +504,7 @@ ggplot(kuaibao.messages, aes(x = day)) + geom_histogram(aes(y = ..count..),
 
 ```r
 ggplot(kuaibao.messages, aes(x = day, fill = type_detail)) + geom_histogram(aes(y = ..count..), 
-    binwidth = 0.5)
+    binwidth = 0.5) + xlab("") + ylab("")
 ```
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_cnt_ts_type_detail_.png" title="plot of chunk messages cnt ts type_detail " alt="plot of chunk messages cnt ts type_detail " style="display: block; margin: auto;" />
@@ -586,11 +630,7 @@ dim(sa)
 ```
 
 ```r
-
-
-
 fm2 <- lm(formula = subscribe ~ profit + isweekend, data = sa)
-
 summary(fm2)
 ```
 
@@ -618,6 +658,33 @@ summary(fm2)
 
 ```r
 
+fm3 <- lm(formula = subscribe ~ profit, data = sa)
+summary(fm3)
+```
+
+```
+## 
+## Call:
+## lm(formula = subscribe ~ profit, data = sa)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -44.63 -20.10  -3.49  11.35  82.05 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   -273.4       52.9   -5.17  2.3e-06 ***
+## profit         268.8       42.1    6.38  1.9e-08 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 25.8 on 67 degrees of freedom
+## Multiple R-squared:  0.378,	Adjusted R-squared:  0.368 
+## F-statistic: 40.7 on 1 and 67 DF,  p-value: 1.93e-08
+```
+
+```r
+
 ```
 
 
@@ -630,7 +697,7 @@ ggplot(subscribeanalysis, aes(x = profit, y = subscribe)) + geom_point(color = "
     ylab("subscribe")
 ```
 
-<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_subscribe_fm21.png" title="plot of chunk subscribe fm2" alt="plot of chunk subscribe fm2" style="display: block; margin: auto;" />
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_subscribe_fm31.png" title="plot of chunk subscribe fm3" alt="plot of chunk subscribe fm3" style="display: block; margin: auto;" />
 
 ```r
 
@@ -640,7 +707,7 @@ ggplot(subscribeanalysis, aes(x = profit, y = subscribe)) + geom_point(color = "
     ylab("subscribe")
 ```
 
-<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_subscribe_fm22.png" title="plot of chunk subscribe fm2" alt="plot of chunk subscribe fm2" style="display: block; margin: auto;" />
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_subscribe_fm32.png" title="plot of chunk subscribe fm3" alt="plot of chunk subscribe fm3" style="display: block; margin: auto;" />
 
 ```r
 
@@ -687,7 +754,7 @@ head(kuaibao.messages)
 ## 6 259     16   1 2013-07-23 01:46:28 2013-07-23    1        1     compute
 ##   content
 ## 1      cx
-## 2  f%h/"
+## 2  æ¥è¯¢
 ## 3      cx
 ## 4    <NA>
 ## 5    <NA>
@@ -936,6 +1003,174 @@ plot(glm.msgana)
 
 <img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_linear_regression6.png" title="plot of chunk messages linear regression" alt="plot of chunk messages linear regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_linear_regression7.png" title="plot of chunk messages linear regression" alt="plot of chunk messages linear regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_linear_regression8.png" title="plot of chunk messages linear regression" alt="plot of chunk messages linear regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_linear_regression9.png" title="plot of chunk messages linear regression" alt="plot of chunk messages linear regression" style="display: block; margin: auto;" />
 
+#### 3.2.3 loess回归分析
+
+```r
+loess.msgana <- loess(message ~ profit + subscribe, data = msgana)
+summary(loess.msgana)
+```
+
+```
+## Call:
+## loess(formula = message ~ profit + subscribe, data = msgana)
+## 
+## Number of Observations: 72 
+## Equivalent Number of Parameters: 10.99 
+## Residual Standard Error: 248 
+## Trace of smoother matrix: 12.99 
+## 
+## Control settings:
+##   normalize:  TRUE 
+##   span	    :  0.75 
+##   degree   :  2 
+##   family   :  gaussian
+##   surface  :  interpolate	  cell = 0.2
+```
+
+```r
+
+anova(lm.msgana, loess.msgana)
+```
+
+```
+## Error: (list) object cannot be coerced to type 'double'
+```
+
+```r
+
+lm2.msgana <- lm(message ~ profit + subscribe, data = msgana)
+summary(lm2.msgana)
+```
+
+```
+## 
+## Call:
+## lm(formula = message ~ profit + subscribe, data = msgana)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -451.9 -197.4  -55.5  152.6  695.7 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -3404.200    553.784   -6.15  4.5e-08 ***
+## profit       3246.395    464.898    6.98  1.4e-09 ***
+## subscribe       4.359      0.802    5.44  7.7e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 249 on 69 degrees of freedom
+## Multiple R-squared:  0.735,	Adjusted R-squared:  0.727 
+## F-statistic: 95.6 on 2 and 69 DF,  p-value: <2e-16
+```
+
+```r
+
+anova(lm.msgana, lm2.msgana)
+```
+
+```
+## Analysis of Variance Table
+## 
+## Model 1: message ~ profit + subscribe + isweekend
+## Model 2: message ~ profit + subscribe
+##   Res.Df     RSS Df Sum of Sq    F Pr(>F)
+## 1     68 4211540                         
+## 2     69 4281807 -1    -70267 1.13   0.29
+```
+
+```r
+
+final.lm.msgana <- step(lm.msgana)
+```
+
+```
+## Start:  AIC=798.3
+## message ~ profit + subscribe + isweekend
+## 
+##             Df Sum of Sq     RSS AIC
+## - isweekend  1     70267 4281807 798
+## <none>                   4211540 798
+## - subscribe  1   1897233 6108773 823
+## - profit     1   3083015 7294555 836
+## 
+## Step:  AIC=797.5
+## message ~ profit + subscribe
+## 
+##             Df Sum of Sq     RSS AIC
+## <none>                   4281807 798
+## - subscribe  1   1835424 6117231 821
+## - profit     1   3025968 7307775 834
+```
+
+```r
+plot(lm.msgana)
+```
+
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression1.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression2.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression3.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression4.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" />
+
+```r
+
+final.lm.msgana.predictions <- predict(final.lm.msgana, msgana)
+
+plot(final.lm.msgana.predictions, msgana$message)
+abline(0, 1, lty = 2)
+```
+
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression5.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" />
+
+```r
+
+shapiro.test(msgana$subscribe)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  msgana$subscribe
+## W = 0.7464, p-value = 7.949e-10
+```
+
+```r
+
+glm.msgana <- glm(message ~ profit + subscribe, family = gaussian, data = msgana)
+
+summary(glm.msgana)
+```
+
+```
+## 
+## Call:
+## glm(formula = message ~ profit + subscribe, family = gaussian, 
+##     data = msgana)
+## 
+## Deviance Residuals: 
+##    Min      1Q  Median      3Q     Max  
+## -451.9  -197.4   -55.5   152.6   695.7  
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -3404.200    553.784   -6.15  4.5e-08 ***
+## profit       3246.395    464.898    6.98  1.4e-09 ***
+## subscribe       4.359      0.802    5.44  7.7e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for gaussian family taken to be 62055)
+## 
+##     Null deviance: 16140875  on 71  degrees of freedom
+## Residual deviance:  4281807  on 69  degrees of freedom
+## AIC: 1004
+## 
+## Number of Fisher Scoring iterations: 2
+```
+
+```r
+plot(glm.msgana)
+```
+
+<img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression6.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression7.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression8.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" /><img src="{{ site.img_url }}/kuaibao/figure/kuaibao_messages_loess_regression9.png" title="plot of chunk messages loess regression" alt="plot of chunk messages loess regression" style="display: block; margin: auto;" />
 
 
 
