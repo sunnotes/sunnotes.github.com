@@ -3,7 +3,7 @@ layout: post
 title: MySQL日期类型选择总结
 description: 
 category: code 
-tags: [mysql , time  ]
+tags: [ MySQL , time  ]
 ---
 {% include JB/setup %}
 
