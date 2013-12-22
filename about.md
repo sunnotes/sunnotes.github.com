@@ -56,4 +56,4 @@ permalink: /about/
 
 - [知乎](http://zhihu.com/people/eason8) - @eason
 
-- Email and Gtalk：liliangjun88 AT gmail.co
+- Email and Gtalk：liliangjun88 AT gmail
