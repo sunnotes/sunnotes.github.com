@@ -27,7 +27,7 @@ permalink: /about/
 喜欢Linux, 喜欢Open Source/Software，爱捣腾，钟情于互联网
 
 
-维护着[微收益]的[微博](http://weibo.com/aliyuebao)与[微信]({{ site.img_url }}/me/kuaibao_wechat_code.jpg)平台，目前正为20000+用户提供服务，感谢SAE
+维护着[微收益]的[微博](http://weibo.com/aliyuebao)与[微信]({{ site.img_url }}/me/weishouyi_wechat_code.jpg)平台，目前正为20000+用户提供服务，感谢SAE
 
 
 对数据挖掘与数据分析很感兴趣，目前正朝着数据科学家的路上一路狂奔
