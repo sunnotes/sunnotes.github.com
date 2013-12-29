@@ -600,6 +600,13 @@ rankR    HIGH  LOW MEDIUM
   
 ```
 
+# 5参考
+
+所以的代码均在
+
+- [github库](https://github.com/sunnotes/Programming-R)
+- [rpart](https://github.com/sunnotes/Programming-R/tree/master/kuaibao/useranalysis/useranalysis.R)
+- [RFM](https://github.com/sunnotes/Programming-R/tree/master/kuaibao/useranalysis/rfmanalysis.R)
 
 
 
