@@ -3,7 +3,7 @@ layout: page
 title: 应用 
 header: Pages
 group: navigation
-permalink: /about/
+permalink: /app/
 ---
 
 {% include JB/setup %}
