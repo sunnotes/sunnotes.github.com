@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "使用R完成逻辑回归分类"
+title: "使用R实现逻辑回归分类"
 description: ""
 category: statistics
-tags: [ 逻辑回归 , R,分类 ]
+tags: [ 逻辑回归 , R, 分类 ]
 ---
 {% include JB/setup %}
 
@@ -16,26 +16,7 @@ tags: [ 逻辑回归 , R,分类 ]
 
 ```r
 #install.packages("AER")
-library(AER)
-```
-
-```
-## Loading required package: car
-## Loading required package: lmtest
-## Loading required package: zoo
-## 
-## Attaching package: 'zoo'
-## 
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-## 
-## Loading required package: sandwich
-## Loading required package: survival
-## Loading required package: splines
-```
-
-```r
+#library(AER)
 data(Affairs,package="AER")
 summary(Affairs)
 ```
@@ -263,4 +244,18 @@ t = 615.36/596 = 1.03
 
 ```r
 fit <- glm(ynaffair ~  age + yearsmarried +  religiousness + rating,
-         
+                data =  Affairs,
+                family = binomial())
+fit.od <- glm(ynaffair ~  age + yearsmarried +  religiousness + rating,
+                data =  Affairs,
+                family = quasibinomial())
+
+pchisq(summary(fit.od)$dispersion * fit$df.residual , fit$df.residual , lower = F)
+```
+
+```
+## [1] 0.3401
+```
+
+0.34 显然不显著
+没有出现过度离势
