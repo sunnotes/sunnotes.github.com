@@ -19,6 +19,7 @@ permalink: /todo/
 - 微收益平台
 - 收益宝App Android
 - 阿里大数据竞赛
+- KDD Cup 2014 - Predicting Excitement at DonorsChoose.org
 
 ##完结
 
