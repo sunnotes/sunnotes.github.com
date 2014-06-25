@@ -9,7 +9,7 @@ permalink: /about/
 {% include JB/setup %}
 
 
-85后，湖北荆州人士
+85后，湖北荆州，古楚云梦泽人
 
 
 目前混迹于废都
